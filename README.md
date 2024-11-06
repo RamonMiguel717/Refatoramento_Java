@@ -1,3 +1,5 @@
+# Documentação do projeto em: https://github.com/RamonMiguel717/Refatoramento_Java/blob/main/Documenta%C3%A7%C3%A3o.md
+
 Documento de Refatoração do Projeto de Gerenciamento de Funcionários e Projetos
 # 1. Problemas Encontrados
 
