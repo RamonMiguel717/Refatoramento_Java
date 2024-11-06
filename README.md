@@ -1,16 +1,16 @@
 Documento de Refatoração do Projeto de Gerenciamento de Funcionários e Projetos
 # 1. Problemas Encontrados
 
-##1.1 Uso Excessivo de Métodos Duplicados ou Inúteis
+## 1.1 Uso Excessivo de Métodos Duplicados ou Inúteis
 
 Eu identifiquei métodos e funções que não estavam sendo utilizados ou que duplicavam funcionalidades já presentes em outras partes do código. Por exemplo, a classe GerenciadorDeFuncionarios não estava sendo chamada em nenhum local no código principal (Main.  ), o que indicava que sua presença era desnecessária.
 
 > Ação: Removi GerenciadorDeFuncionarios para simplificar o código e evitar confusões futuras.
-##1.2 Métodos de Adição e Remoção de Funcionários
+## 1.2 Métodos de Adição e Remoção de Funcionários
 
 O método adicionarFuncionario na classe Funcionario apresentava uma lógica confusa para adicionar novos funcionários. Ele instanciava um novo objeto Funcionario e o adicionava a uma lista estática, o que tornava difícil separar a instância de Funcionario da lógica de gerência.
 
-** Antes da Refatoração:
+Antes da Refatoração:
  
 ```
 public void adicionarFuncionario(String nome, String cargo, float salario) {
@@ -20,7 +20,7 @@ public void adicionarFuncionario(String nome, String cargo, float salario) {
 }
 ```
 
-** Depois da Refatoração:
+Depois da Refatoração:
 
 Transferi a lógica de adição e remoção de funcionários para a classe Projeto, que já centralizava a alocação dos funcionários em projetos. A função foi adaptada para permitir a adição de um funcionário a um projeto específico, aumentando a modularidade.
   
@@ -36,7 +36,7 @@ public void adicionarFuncionarioAoProjeto(Funcionario funcionario) {
 
 Alguns métodos e variáveis apresentavam nomes confusos ou inconsistentes, como listarProjetos. O nome deste método não deixava claro que ele apenas exibia a lista, sem retornar dados. Padronizei nomes para melhorar a clareza e consistência.
 
-  **Antes da Refatoração:
+  Antes da Refatoração:
   
  
 ```
@@ -60,7 +60,7 @@ public void exibirListaDeProjetos(List<Projeto> projetos) {
 
 Identifiquei uma falta de validação para as entradas do usuário, especialmente ao selecionar um projeto pela posição na lista. Caso o usuário inserisse um número inválido, o programa quebrava.
 
-  ** Antes da Refatoração:
+  Antes da Refatoração:
   
  
 ```
@@ -69,7 +69,7 @@ int numeroProjeto = scanner.nextInt();
 Projeto projeto = projetos.get(numeroProjeto - 1);
 ```
 
-  ** Depois da Refatoração:
+  Depois da Refatoração:
 
  Implementei uma verificação para garantir que o índice informado pelo usuário seja válido.
 
@@ -91,7 +91,7 @@ if (numeroProjeto > 0 && numeroProjeto <= projetos.size()) {
 
 O menu de opções no Main estava com opções que poderiam ser organizadas ou simplificadas. Por exemplo, a função listarProjetos era repetida em diversas opções.
 
-  ** Antes da Refatoração:
+  Antes da Refatoração: 
   
  
 ```
@@ -103,7 +103,7 @@ System.out.println("5. Excluir projeto");
 System.out.println("6. Sair");
 ```
 
-  ** Depois da Refatoração:
+  Depois da Refatoração:
 
 Organizei o menu e removi opções redundantes, tornando-o mais conciso e de fácil navegação.
   
